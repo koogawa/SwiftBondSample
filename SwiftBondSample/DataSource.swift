@@ -2,7 +2,7 @@
 //  DataSource.swift
 //  SwiftBondSample
 //
-//  Created by koogawa on 2016/05/15.
+//  Created by Kosuke Ogawa on 2016/06/12.
 //  Copyright © 2016 koogawa. All rights reserved.
 //
 

@@ -2,7 +2,7 @@
 //  Venue.swift
 //  SwiftBondSample
 //
-//  Created by koogawa on 2015/07/21.
+//  Created by Kosuke Ogawa on 2016/06/12.
 //  Copyright (c) 2015 Kosuke Ogawa. All rights reserved.
 //
 

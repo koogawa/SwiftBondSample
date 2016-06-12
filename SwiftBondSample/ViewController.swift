@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  SwiftBondSample
 //
-//  Created by Kosuke Ogawa on 2016/05/12.
+//  Created by Kosuke Ogawa on 2016/06/12.
 //  Copyright © 2016 koogawa. All rights reserved.
 //
 
