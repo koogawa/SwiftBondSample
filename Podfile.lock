@@ -1,0 +1,16 @@
+PODS:
+  - Bond (4.3.1)
+  - FoursquareAPIClient (1.0.0)
+  - SwiftyJSON (2.3.2)
+
+DEPENDENCIES:
+  - Bond (~> 4.0)
+  - FoursquareAPIClient
+  - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Bond: 55903fc67f09e8e49791a657163cabba1d6fb29d
+  FoursquareAPIClient: e2b5c0bb62ffaabaab19309ed528f0c8a8c83bfa
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+
+COCOAPODS: 0.39.0
