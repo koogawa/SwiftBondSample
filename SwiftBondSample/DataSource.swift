@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
+import Bond
 
 public final class DataSource: NSObject, RxTableViewDataSourceType, UITableViewDataSource {
 

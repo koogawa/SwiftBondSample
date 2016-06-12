@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import RxSwift
+import Bond
 import SwiftyJSON
 import FoursquareAPIClient
 

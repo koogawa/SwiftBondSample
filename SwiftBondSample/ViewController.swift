@@ -7,13 +7,10 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
+import Bond
 
-class ViewController: UIViewController {
+class ViewController: UITableViewController {
 
-    @IBOutlet weak var tableView: UITableView!
-    
     var viewModel = ViewModel()
     var dataSource = DataSource()
     var delegate = Delegate()
