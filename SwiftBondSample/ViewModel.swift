@@ -13,7 +13,7 @@ import FoursquareAPIClient
 
 public final class ViewModel {
 
-    private(set) var venues = Variable<[Venue]>([])
+    private(set) var venues = ObservableArray<Venue>([])
     let disposeBag = DisposeBag()
 
     init() {
@@ -24,38 +24,56 @@ public final class ViewModel {
 
 public func fetch() {
     self.send()
-        .subscribe { [weak self] (event) -> Void in
-            switch event {
-            case .Next(let value):
-                self?.venues.value = value
-            case .Error(_):
-                ()
-            case .Completed:
-                ()
-            }
-        }
-        .addDisposableTo(disposeBag)
+//        .subscribe { [weak self] (event) -> Void in
+//            switch event {
+//            case .Next(let value):
+//                self?.venues.value = value
+//            case .Error(_):
+//                ()
+//            case .Completed:
+//                ()
+//            }
+//        }
+//        .addDisposableTo(disposeBag)
 }
 
 // MARK: - Private
 
-// TODO: ここもクラス化
-func send() -> Observable<[Venue]> {
-    return Observable.create{ (observer) in
-        let client = FoursquareAPIClient(accessToken: "YOUR_TOKEN")
+    private func send() {
+        let client = FoursquareAPIClient(accessToken: "LZW1YQW5SVHEJP5JTHPWRS4MQ1MRMBVKM1B1FA2JO2YPFXHZ")
         let parameter: [String: String] = [
             "ll": "40.7,-74",
-        ];
+            ];
         client.requestWithPath("venues/search", parameter: parameter) {
             [weak self] (data, error) in
+            guard error == nil else {
+                print("error guard")
+                return
+            }
+
             let json = JSON(data: data!)
             let venues = (self?.parseVenues(json["response"]["venues"])) ?? [Venue]()
-            observer.on(.Next(venues))
-            observer.on(.Completed)
+            self?.venues.array = venues
         }
-        return AnonymousDisposable {}
     }
-}
+
+// TODO: ここもクラス化
+//func send() -> Observable<[Venue]> {
+//    return Observable.create{ (observer) in
+//        let client = FoursquareAPIClient(accessToken: "YOUR_TOKEN")
+//        let parameter: [String: String] = [
+//            "ll": "40.7,-74",
+//        ];
+//        client.requestWithPath("venues/search", parameter: parameter) {
+//            [weak self] (data, error) in
+//            let json = JSON(data: data!)
+//            let venues = (self?.parseVenues(json["response"]["venues"])) ?? [Venue]()
+//            observer.on(.Next(venues))
+//            observer.on(.Completed)
+//        }
+//        return AnonymousDisposable {}
+//    }
+//}
 
 func parseVenues(venuesJSON: JSON) -> [Venue] {
     var venues = [Venue]()
