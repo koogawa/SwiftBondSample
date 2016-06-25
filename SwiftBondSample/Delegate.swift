@@ -7,12 +7,27 @@
 //
 
 import UIKit
+import SafariServices
 
-public final class Delegate: NSObject, UITableViewDelegate {
+extension ViewController {
 
     // MARK: - UITableView Delegate
 
-    public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
+    }
+
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let venue = self.viewModel.venues.array[indexPath.row]
+        let urlString = "https://foursquare.com/v/" + venue.venueId
+        if let url = NSURL(string: urlString) {
+            let safariViewController = SFSafariViewController(URL: url)
+            self.presentViewController(
+                safariViewController,
+                animated: true,
+                completion: nil
+            )
+        }
     }
 }
